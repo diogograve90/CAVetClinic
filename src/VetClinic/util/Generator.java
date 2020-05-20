@@ -6,6 +6,9 @@ import java.util.Random;
 import Staff.Staff;
 import StaffAdmin.ItNerd;
 import StaffAdmin.Receptionist;
+import StaffMedical.Nurse;
+import StaffMedical.TraineeVet;
+import StaffMedical.Veterinarian;
 
 
 public class Generator {
@@ -122,4 +125,103 @@ public class Generator {
 		return returnedStaff;
 
 	}
+
+	public static ArrayList<Staff> medicalGenerator() {
+
+		ArrayList<Staff> returnedStaff = new ArrayList<Staff>();
+
+		for (int i = 0; i < 5; i++) {
+			
+			Staff vet = new Veterinarian();
+
+			int minSal = 3000;
+			int maxSal = 8001;
+
+			Random r = new Random();
+			Integer salaryValue = r.nextInt(maxSal - minSal) + minSal;
+			String salary = salaryValue.toString();
+
+			vet.setName(firstNameGenerator() + " " + lastNameGenerator());
+			vet.setSalary(salary);
+			vet.setTask(taskGenerator(arrayOfTasksVeterinarian));
+			vet.setId(i + 1);
+			
+			returnedStaff.add(vet);
+
+		} 
+
+		for (int j = 5; j < 30; j++) {
+
+			Random r1 = new Random();
+			Integer decision = r1.nextInt(3);
+
+			switch (decision) {
+
+			case (0):
+				
+				Staff vet = new Veterinarian();
+
+				int minSalVet = 3000;
+				int maxSalVet = 8001;
+
+				Random r2 = new Random();
+				Integer salaryValueVet = r2.nextInt(maxSalVet - minSalVet) + minSalVet;
+				String salaryVet = salaryValueVet.toString();
+
+				vet.setName(firstNameGenerator() + " " + lastNameGenerator());
+				vet.setSalary(salaryVet);
+				vet.setTask(taskGenerator(arrayOfTasksVeterinarian));
+				vet.setId(j + 1);
+				
+				returnedStaff.add(vet);
+
+				break;
+
+				
+			case (1):
+				Staff nurse = new Nurse();
+
+				int minSalNurse = 1500;
+				int maxSalNurse = 5001;
+
+				Random r3 = new Random();
+				Integer salaryValueNurse = r3.nextInt(maxSalNurse - minSalNurse) + minSalNurse;
+				String salaryNurse = salaryValueNurse.toString();
+
+				nurse.setName(firstNameGenerator() + " " + lastNameGenerator());
+				nurse.setSalary(salaryNurse);
+				nurse.setTask(taskGenerator(arrayOfTasksNurse));
+				nurse.setId(j + 1);
+				
+				returnedStaff.add(nurse);
+
+				break;
+
+			case (2):
+				
+				Staff trainee = new TraineeVet();
+
+				int minSalTrainee = 1500;
+				int maxSalTrainee = 5001;
+
+				Random r4 = new Random();
+				Integer salaryValueTrainee = r4.nextInt(maxSalTrainee - minSalTrainee) + minSalTrainee;
+				String salaryTrainee = salaryValueTrainee.toString();
+
+				trainee.setName(firstNameGenerator() + " " + lastNameGenerator());
+				trainee.setSalary(salaryTrainee);
+				trainee.setTask(taskGenerator(arrayOfTasksTraineeVet));
+				trainee.setId(j + 1);
+				
+				returnedStaff.add(trainee);
+
+				break;
+
+			} 
+
+		}
+
+		return null;
+	}
+	
 }
