@@ -1,6 +1,9 @@
 package Animals;
 
 public class Cat extends Animal {
+	
+	public static final int CAT_AGE_LIMIT = 16;
+	
     public Cat(int id, String name, int age, String medicalCondition) {
         super(id, name, age, medicalCondition);
     }

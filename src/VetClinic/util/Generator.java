@@ -3,6 +3,10 @@ package VetClinic.util;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Animals.Animal;
+import Animals.Cat;
+import Animals.Dog;
+import Animals.Rabbit;
 import Staff.Staff;
 import StaffAdmin.ItNerd;
 import StaffAdmin.Receptionist;
@@ -43,6 +47,7 @@ public class Generator {
 	protected static String[] arrayOfTasksVeterinarian = { "Treat wounded animal" };
 	protected static String[] arrayOfTasksNurse = { " " };
 	protected static String[] arrayOfTasksTraineeVet = { " " };
+	protected static String[] arrayOfAnimalNames = { "" };
 
 	
 	
@@ -53,6 +58,38 @@ public class Generator {
 
 		return array[index];
 
+	}
+	
+	public static String animalNameGenerator() {
+		
+
+		Random r = new Random();
+		int index = r.nextInt(arrayOfAnimalNames.length);
+
+		return arrayOfAnimalNames[index];
+
+		
+	}
+	
+	public static int animalAgeGenerator(int ageLimit) {
+		
+		Random r = new Random();
+		int age = r.nextInt(ageLimit)+1;
+
+		return age;
+
+		
+	}
+	
+	public static String animalDiseaseGenerator() {
+		
+
+		Random r = new Random();
+		int index = r.nextInt(arrayOfDiseases.length);
+
+		return arrayOfDiseases[index];
+
+		
 	}
 
 	public static String firstNameGenerator() {
@@ -224,4 +261,53 @@ public class Generator {
 		return null;
 	}
 	
+	public static ArrayList<Animal> animalGenerator() {
+
+		ArrayList<Animal> returnedAnimals = new ArrayList<Animal>();
+
+		for (int i = 0; i < 1000; i++) {
+			Random r1 = new Random();
+			Integer decision = r1.nextInt(3);
+
+			switch (decision) {
+
+			case (0):
+				
+				Animal dog = new Dog();
+				dog.setId(i+1);
+				dog.setName(animalNameGenerator());
+				dog.setAge(animalAgeGenerator(Dog.DOG_AGE_LIMIT));
+				dog.setMedicalCondition(animalDiseaseGenerator());			  			
+				returnedAnimals.add(dog);
+				
+				break;
+
+			case (1):
+
+				Animal cat = new Cat();
+				cat.setId(i+1);
+				cat.setName(animalNameGenerator());
+				cat.setAge(animalAgeGenerator(Cat.CAT_AGE_LIMIT));
+				cat.setMedicalCondition(animalDiseaseGenerator());			  			
+				returnedAnimals.add(cat);
+				
+				break;
+
+			case (2):
+
+				Animal rabbit = new Rabbit();
+				rabbit.setId(i+1);
+				rabbit.setName(animalNameGenerator());
+				rabbit.setAge(animalAgeGenerator(Rabbit.RABBIT_AGE_LIMIT));
+				rabbit.setMedicalCondition(animalDiseaseGenerator());			  			
+				returnedAnimals.add(rabbit);
+				
+				break;
+			}
+
+
+		}
+
+		return returnedAnimals;
+	}
 }

@@ -1,12 +1,12 @@
 package Animals;
 
 public abstract class Animal {
-    private int id;
+	private int id;
     private String name;
     private int age;
     private String medicalCondition;
 
-    public Animal(int id, String name, int age, String medicalCondition) {
+    public Animal(int id, String name,int age, String medicalCondition) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -56,4 +56,5 @@ public abstract class Animal {
                 "age=" + age + '\n' +
                 "medicalCondition='" + medicalCondition + '\'' + '\n' ;
     }
+    
 }
