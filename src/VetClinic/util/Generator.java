@@ -14,8 +14,37 @@ import StaffMedical.Nurse;
 import StaffMedical.TraineeVet;
 import StaffMedical.Veterinarian;
 
+/**
+ * Generator Class This class is used to generate the necessary objects in
+ * runtime, as per the CA document
+ * 
+ */
 
 public class Generator {
+	protected static String[] arrayOfAnimalNames = { "Aardvark", "Albatross", "Alligator", "Alpaca", "Ant", "Anteater",
+			"Antelope", "Ape", "Armadillo", "Donkey", "Baboon", "Badger", "Barracuda", "Bat", "Bear", "Beaver", "Bee",
+			"Bison", "Boar", "Buffalo", "Butterfly", "Camel", "Capybara", "Caribou", "Cassowary", "Cat", "Caterpillar",
+			"Cattle", "Chamois", "Cheetah", "Chicken", "Chimpanzee", "Chinchilla", "Chough", "Clam", "Cobra",
+			"Cockroach", "Cod", "Cormorant", "Coyote", "Crab", "Crane", "Crocodile", "Crow", "Curlew", "Deer",
+			"Dinosaur", "Dog", "Dogfish", "Dolphin", "Dotterel", "Dove", "Dragonfly", "Duck", "Dugong", "Dunlin",
+			"Eagle", "Echidna", "Eel", "Eland", "Elephant", "Elk", "Emu", "Falcon", "Ferret", "Finch", "Fish",
+			"Flamingo", "Fly", "Fox", "Frog", "Gaur", "Gazelle", "Gerbil", "Giraffe", "Gnat", "Gnu", "Goat",
+			"Goldfinch", "Goldfish", "Goose", "Gorilla", "Goshawk", "Grasshopper", "Grouse", "Guanaco", "Gull",
+			"Hamster", "Hare", "Hawk", "Hedgehog", "Heron", "Herring", "Hippopotamus", "Hornet", "Horse", "Human",
+			"Hummingbird", "Hyena", "Ibex", "Ibis", "Jackal", "Jaguar", "Jay", "Jellyfish", "Kangaroo", "Kingfisher",
+			"Koala", "Kookabura", "Kouprey", "Kudu", "Lapwing", "Lark", "Lemur", "Leopard", "Lion", "Llama", "Lobster",
+			"Locust", "Loris", "Louse", "Lyrebird", "Magpie", "Mallard", "Manatee", "Mandrill", "Mantis", "Marten",
+			"Meerkat", "Mink", "Mole", "Mongoose", "Monkey", "Moose", "Mosquito", "Mouse", "Mule", "Narwhal", "Newt",
+			"Nightingale", "Octopus", "Okapi", "Opossum", "Oryx", "Ostrich", "Otter", "Owl", "Oyster", "Panther",
+			"Parrot", "Partridge", "Peafowl", "Pelican", "Penguin", "Pheasant", "Pig", "Pigeon", "Pony", "Porcupine",
+			"Porpoise", "Quail", "Quelea", "Quetzal", "Rabbit", "Raccoon", "Rail", "Ram", "Rat", "Raven", "Red deer",
+			"Red panda", "Reindeer", "Rhinoceros", "Rook", "Salamander", "Salmon", "Sand Dollar", "Sandpiper",
+			"Sardine", "Scorpion", "Seahorse", "Seal", "Shark", "Sheep", "Shrew", "Skunk", "Snail", "Snake", "Sparrow",
+			"Spider", "Spoonbill", "Squid", "Squirrel", "Starling", "Stingray", "Stinkbug", "Stork", "Swallow", "Swan",
+			"Tapir", "Tarsier", "Termite", "Tiger", "Toad", "Trout", "Turkey", "Turtle", "Viper", "Vulture", "Wallaby",
+			"Walrus", "Wasp", "Weasel", "Whale", "Wildcat", "Wolf", "Wolverine", "Wombat", "Woodcock", "Woodpecker",
+			"Worm", "Wren", "Yak", "Zebra" };
+
 	protected static String[] arrayOfFirstNames = { "Joe", "Donna", "Ronald", "Sarah", "David", "Courtney", "Irwin",
 			"Linda", "Michael", "Cindy", "Tom", "Rebekah", "Todd", "Tracy", "Peter", "Nicole", "Marcelo", "Jennifer",
 			"Rick", "Andrea", "Bruce", "Jaclyn", "Doug", "Shirley", "Steve", "Liz", "Waldo", "Theresa", "Scott",
@@ -41,16 +70,15 @@ public class Generator {
 			"Psittacosis", "Plague", "Q fever", "Campylobacteriosis", "Leptospirosis", "Salmonellosis", "Toxoplasmosis",
 			"Ringworm", "Roundworm", "Tapeworm", "Hookworm", "Capnocytophaga", "Strep zoo" };
 	protected static String[] arrayOfTasksItNerd = { "Install office 365", "Unfreeze a computer", "Server maintenance",
-			"Remove virus", "Format a computer", "Manage database", "Develop company's app", "Tech support" };
+			"Remove virus", "Format a pc", "Manage database", "Develop company's app", "Tech support", };
 	protected static String[] arrayOfTasksReceptionist = { "Schedule exams", "Manage clients", "Payment checkout",
-			"Receive new clients", "Remind clients of appointments" };
-	protected static String[] arrayOfTasksVeterinarian = { "Treat wounded animal" };
-	protected static String[] arrayOfTasksNurse = { " " };
-	protected static String[] arrayOfTasksTraineeVet = { " " };
-	protected static String[] arrayOfAnimalNames = { "" };
+			"Receive new client" };
+	protected static String[] arrayOfTasksVeterinarian = { "Treat wounded animal", "Surgery", "Yearly checkup" };
+	protected static String[] arrayOfTasksNurse = { "Take care of animal", "Assist veterinarian", "Give shots" };
+	protected static String[] arrayOfTasksTraineeVet = { "Watch veterinarian working", "Assist nurse",
+			"Watch an animal " };
 
-	
-	
+	// this method picks a random task from a list
 	public static String taskGenerator(String[] array) {
 
 		Random r = new Random();
@@ -59,39 +87,38 @@ public class Generator {
 		return array[index];
 
 	}
-	
+
+	// this method returns a random animal name
 	public static String animalNameGenerator() {
-		
 
 		Random r = new Random();
 		int index = r.nextInt(arrayOfAnimalNames.length);
 
 		return arrayOfAnimalNames[index];
 
-		
 	}
-	
+
+	// this method returns an animal age within a certain limit
 	public static int animalAgeGenerator(int ageLimit) {
-		
+
 		Random r = new Random();
-		int age = r.nextInt(ageLimit)+1;
+		int age = r.nextInt(ageLimit) + 1;
 
 		return age;
 
-		
 	}
-	
+
+	// this method returns a random disease from a list
 	public static String animalDiseaseGenerator() {
-		
 
 		Random r = new Random();
 		int index = r.nextInt(arrayOfDiseases.length);
 
 		return arrayOfDiseases[index];
 
-		
 	}
 
+	// this method returns a random first name from a list
 	public static String firstNameGenerator() {
 
 		Random r = new Random();
@@ -101,6 +128,7 @@ public class Generator {
 
 	}
 
+	// this method returns a random last name from a list
 	public static String lastNameGenerator() {
 
 		Random r = new Random();
@@ -110,6 +138,7 @@ public class Generator {
 
 	}
 
+	// this method generates 10 admin staff as per the CA document
 	public static ArrayList<Staff> adminGenerator() {
 
 		ArrayList<Staff> returnedStaff = new ArrayList<Staff>();
@@ -134,6 +163,7 @@ public class Generator {
 				itNerd.setSalary(salary);
 				itNerd.setTask(taskGenerator(arrayOfTasksItNerd));
 				itNerd.setId(k + 1);
+				itNerd.setType(ItNerd.TYPE);
 
 				returnedStaff.add(itNerd);
 
@@ -152,23 +182,25 @@ public class Generator {
 				receptionist.setSalary(salary);
 				receptionist.setTask(taskGenerator(arrayOfTasksReceptionist));
 				receptionist.setId(k + 1);
+				receptionist.setType(Receptionist.TYPE);
 
 				returnedStaff.add(receptionist);
 
 			}
 
 		}
-		
+
 		return returnedStaff;
 
 	}
 
+	// this method generates 30 medical staff as per the CA document
 	public static ArrayList<Staff> medicalGenerator() {
 
 		ArrayList<Staff> returnedStaff = new ArrayList<Staff>();
 
 		for (int i = 0; i < 5; i++) {
-			
+
 			Staff vet = new Veterinarian();
 
 			int minSal = 3000;
@@ -182,10 +214,11 @@ public class Generator {
 			vet.setSalary(salary);
 			vet.setTask(taskGenerator(arrayOfTasksVeterinarian));
 			vet.setId(i + 1);
-			
+			vet.setType(Veterinarian.TYPE);
+
 			returnedStaff.add(vet);
 
-		} 
+		}
 
 		for (int j = 5; j < 30; j++) {
 
@@ -195,7 +228,7 @@ public class Generator {
 			switch (decision) {
 
 			case (0):
-				
+
 				Staff vet = new Veterinarian();
 
 				int minSalVet = 3000;
@@ -209,12 +242,12 @@ public class Generator {
 				vet.setSalary(salaryVet);
 				vet.setTask(taskGenerator(arrayOfTasksVeterinarian));
 				vet.setId(j + 1);
-				
+				vet.setType(Veterinarian.TYPE);
+
 				returnedStaff.add(vet);
 
 				break;
 
-				
 			case (1):
 				Staff nurse = new Nurse();
 
@@ -229,13 +262,14 @@ public class Generator {
 				nurse.setSalary(salaryNurse);
 				nurse.setTask(taskGenerator(arrayOfTasksNurse));
 				nurse.setId(j + 1);
-				
+				nurse.setType(Nurse.TYPE);
+
 				returnedStaff.add(nurse);
 
 				break;
 
 			case (2):
-				
+
 				Staff trainee = new TraineeVet();
 
 				int minSalTrainee = 1500;
@@ -249,18 +283,20 @@ public class Generator {
 				trainee.setSalary(salaryTrainee);
 				trainee.setTask(taskGenerator(arrayOfTasksTraineeVet));
 				trainee.setId(j + 1);
-				
+				trainee.setType(TraineeVet.TYPE);
+
 				returnedStaff.add(trainee);
 
 				break;
 
-			} 
+			}
 
 		}
 
-		return null;
+		return returnedStaff;
 	}
-	
+
+	// this method generates 1000 animals as per the CA document
 	public static ArrayList<Animal> animalGenerator() {
 
 		ArrayList<Animal> returnedAnimals = new ArrayList<Animal>();
@@ -272,42 +308,45 @@ public class Generator {
 			switch (decision) {
 
 			case (0):
-				
+
 				Animal dog = new Dog();
-				dog.setId(i+1);
+				dog.setId(i + 1);
 				dog.setName(animalNameGenerator());
 				dog.setAge(animalAgeGenerator(Dog.DOG_AGE_LIMIT));
-				dog.setMedicalCondition(animalDiseaseGenerator());			  			
+				dog.setMedicalCondition(animalDiseaseGenerator());
+				dog.setType(Dog.TYPE);
 				returnedAnimals.add(dog);
-				
+
 				break;
 
 			case (1):
 
 				Animal cat = new Cat();
-				cat.setId(i+1);
+				cat.setId(i + 1);
 				cat.setName(animalNameGenerator());
 				cat.setAge(animalAgeGenerator(Cat.CAT_AGE_LIMIT));
-				cat.setMedicalCondition(animalDiseaseGenerator());			  			
+				cat.setMedicalCondition(animalDiseaseGenerator());
+				cat.setType(Cat.TYPE);
 				returnedAnimals.add(cat);
-				
+
 				break;
 
 			case (2):
 
 				Animal rabbit = new Rabbit();
-				rabbit.setId(i+1);
+				rabbit.setId(i + 1);
 				rabbit.setName(animalNameGenerator());
 				rabbit.setAge(animalAgeGenerator(Rabbit.RABBIT_AGE_LIMIT));
-				rabbit.setMedicalCondition(animalDiseaseGenerator());			  			
+				rabbit.setMedicalCondition(animalDiseaseGenerator());
+				rabbit.setType(Rabbit.TYPE);
 				returnedAnimals.add(rabbit);
-				
+
 				break;
 			}
-
 
 		}
 
 		return returnedAnimals;
 	}
+
 }
