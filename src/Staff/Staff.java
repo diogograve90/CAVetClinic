@@ -1,20 +1,37 @@
 package Staff;
 
+import java.util.ArrayList;
+
+import Animals.Animal;
+
 public class Staff {
+	
+	private String type;
 	private int id;
     private String name;
     private String salary;
     private String task;
+    private ArrayList<Animal> assignedAnimals;
 
-    public Staff(int id, String name, String salary, String task) {
+    public Staff(String type, int id, String name, String salary, String task) {
+    	this.type = type;
         this.id = id;
         this.name = name;
         this.salary = salary;
         this.task = task;
+        this.assignedAnimals = new ArrayList<Animal>();
     }
         
     public Staff() {
 		super();
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public int getId() {
@@ -48,6 +65,15 @@ public class Staff {
 
 	public void setTask(String task) {
 		this.task = task;
+	}
+		
+
+	public ArrayList<Animal> getAssignedAnimals() {
+		return assignedAnimals;
+	}
+
+	public void assignAnimal(Animal animal) {
+		this.assignedAnimals.add(animal);
 	}
 
 	@Override

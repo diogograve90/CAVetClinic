@@ -1,12 +1,18 @@
 package Animals;
 
+import Staff.Staff;
+
 public abstract class Animal {
+	
+	private String type;
 	private int id;
     private String name;
     private int age;
     private String medicalCondition;
+    private Staff staffResponsible;
 
-    public Animal(int id, String name,int age, String medicalCondition) {
+    public Animal(String type, int id, String name,int age, String medicalCondition) {
+    	this.type = type;
         this.id = id;
         this.name = name;
         this.age = age;
@@ -16,8 +22,16 @@ public abstract class Animal {
     public Animal() {
 
     }
+    
+    public String getType() {
+		return type;
+	}
 
-    public int getId() {
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -47,14 +61,21 @@ public abstract class Animal {
 
     public void setMedicalCondition(String medicalCondition) {
         this.medicalCondition = medicalCondition;
-    }
+    }        
 
-    @Override
+    public Staff getStaffResponsible() {
+		return staffResponsible;
+	}
+
+	public void setStaffResponsible(Staff staffResponsible) {
+		this.staffResponsible = staffResponsible;
+	}
+
+	@Override
     public String toString() {
         return  "id=" + id + '\n' +
                 "name='" + name + '\'' + '\n' +
                 "age=" + age + '\n' +
                 "medicalCondition='" + medicalCondition + '\'' + '\n' ;
-    }
-    
+	}
 }
